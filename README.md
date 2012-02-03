@@ -23,7 +23,7 @@ $ git co -b feature/feature_name
 When checking out an existing topic branch (continuing development of an existing feature) one must first rebase this branch on the primary branch.
 
 ``` bash
-$ git co -b feature/existing
+$ git co feature/existing
 $ git rebase production
 ```
 
@@ -41,7 +41,7 @@ Topic branches must be nested under one of the following categories:
 * copy - Some of the page copy in the application templates is being changed. <br> e.g. **copy/about_us**
 * config - A configuration has changed.<br> e.g. **config/amazon_settings**
 * design - Artwork, HTML or CSS is being changed to incorporate a new design. No behavioural changes may be made.<br> e.g. **design/sign_up_button**
-* documentation - This should not be a nested branch. All documentation may be committed under a main **documentation** branch. When stamping files with [katana_stamp][https://github.com/KatanaCode/katana_stamp] <br> NOTE - Documentation files should not be stored within the Git repository (see Ignore Files).
+* documentation - This should not be a nested branch. All documentation may be committed under a main **documentation** branch. When stamping files with [katana_stamp](https://github.com/KatanaCode/katana_stamp) <br> NOTE - Documentation files should not be stored within the Git repository (see Ignore Files).
 
 Topic branches may be sub-nested if doing so helps to explain the nature of the topic in more depth. e.g., **feature/api/session_management**
 
