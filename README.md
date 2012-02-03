@@ -41,7 +41,7 @@ Topic branches must be nested under one of the following categories:
 * copy - Some of the page copy in the application templates is being changed. <br> e.g. **copy/about_us**
 * config - A configuration has changed.<br> e.g. **config/amazon_settings**
 * design - Artwork, HTML or CSS is being changed to incorporate a new design. No behavioural changes may be made.<br> e.g. **design/sign_up_button**
-* documentation - This should not be a nested branch. All documentation may be committed under **documentation** <br> NOTE - Documentation files should not be stored within the Git repository (see Ignore Files).
+* documentation - This should not be a nested branch. All documentation may be committed under a main **documentation** branch. When stamping files with [katana_stamp][https://github.com/KatanaCode/katana_stamp] <br> NOTE - Documentation files should not be stored within the Git repository (see Ignore Files).
 
 Topic branches may be sub-nested if doing so helps to explain the nature of the topic in more depth. e.g., **feature/api/session_management**
 
@@ -50,22 +50,58 @@ Topic branches may be sub-nested if doing so helps to explain the nature of the 
 When a topic branch is ready to be committed to the primary branch, one must first rebase the topic branch on the primary branch.
 
     $ git rebase master # while on topic
+    
+Once HEAD has successfully been merged with the primary branch, checkout the primary branch and merge the topic branch in without fast-forward.
+
+    $ git co master
+    $ git merge topic --no-ff
 
 ## Ignore Files
 
 Each repository must have a `.gitignore` file. The following files/directories must be ignored where applicable.
 
-    # ignore this to prevent tedious commits containing only bundle updates
-    Gemfile.lock 
-    # for web apps
-    .DS_Store
-    # for web apps
-    tmp/ 
-    # for web apps
-    public/index.html 
-    # for Ruby gems
-    pkg/ 
+### For All Projects
+
+* Gemfile.lock - ignore this to prevent tedious commits containing only bundle updates.
+* .rvmrc - This shouldn't be present in the repos as it forces the server version.
+* doc/ - Compiled docs shouldn't be included in the repos.
+
+### For Web Apps
+
+* .sass-cache/
+* .DS_Store
+* tmp/
+* public/index.html
+* public/assets
+
+### For Gems
+
+* pkg/ 
+* .gem
 
 ## Versioning
 
+New version releases should always be committed on the primary branch.
 
+All version releases must also be tagged. When working on a gem, `$ rake release` will do this for you. When working on a web application, use [per-version](https://github.com/bodacious/per-version)
+
+To tag a commit manually, use:
+
+    $ git tag v1.2.3 -m "Release version 1.2.3"
+
+Katana Code observes [semantic versioning](http://semver.org/) unless otherwise stated.
+
+## Some Git tips
+
+### Amending Commits
+
+When stubby fingers stumble, typos happen! To correct a commit message, use:
+
+$ git commit --amend
+
+### Resetting HEAD
+
+If you want to roll back to a previous commit, you can do a "hard reset":
+
+    $ git reset --hard 5a4a26fd4490b2c5cbd4e64afb3a9790c4924de3
+    
