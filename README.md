@@ -55,12 +55,16 @@ When a topic branch is ready to be committed to the primary branch, one must fir
 
 Each repository must have a `.gitignore` file. The following files/directories must be ignored where applicable.
 
-
-    Gemfile.lock # ignore this to prevent tedious commits containing only bundle updates
-    .DS_Store # for web apps
-    tmp/ # for web apps
-    public/index.html # for web apps
-    pkg/ # for Ruby gems
+    # ignore this to prevent tedious commits containing only bundle updates
+    Gemfile.lock 
+    # for web apps
+    .DS_Store
+    # for web apps
+    tmp/ 
+    # for web apps
+    public/index.html 
+    # for Ruby gems
+    pkg/ 
 
 ## Versioning
 
