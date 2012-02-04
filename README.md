@@ -63,9 +63,9 @@ Each repository must have a `.gitignore` file. The following files/directories m
 ### For All Projects
 
     .bundle
-    Gemfile.lock - ignore this to prevent tedious commits containing only bundle updates.
-    .rvmrc - This shouldn't be present in the repos as it forces the server version.
-    doc/ - Compiled docs shouldn't be included in the repos.
+    Gemfile.lock
+    .rvmrc
+    doc/
 
 ### For Web Apps
 
