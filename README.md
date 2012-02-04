@@ -55,6 +55,14 @@ Once HEAD has successfully been merged with the primary branch, checkout the pri
 
     $ git co master
     $ git merge topic --no-ff
+    
+### Remote Topic Branches
+
+If a topic branch is ready to be merged into a primary branch, one must also push an upstream branch with the same name to the central, remote repository.
+
+    $ git push -u origin topic
+    
+This ensures another team member can pick up the commit and merge it into other branches or modify it if required.
 
 ## Ignore Files
 
