@@ -117,3 +117,6 @@ If you want to roll back to a previous commit, you can do a "hard reset":
 
     $ git reset --hard 5a4a26fd4490b2c5cbd4e64afb3a9790c4924de3
     
+## About Katana Code
+
+Katana Code are [iPhone app and Ruby on Rails Developers in Edinburgh, Scotland](http://katanacode.com/ "Katana Code").
