@@ -64,6 +64,35 @@ If a topic branch is ready to be merged into a primary branch, one must also pus
     
 This ensures another team member can pick up the commit and merge it into other branches or modify it if required.
 
+### Managing Environment Branches
+
+For web apps with staging, and production environments, all topic branches must be rebased off, and merged into **staging**.
+
+With the exception of hotfix branches, the *only* branch that may be merged into production is the staging branch.
+
+    # Merging a topic into staging and then production
+    $ git co staging
+    $ git merge --no-ff topic
+    $ git co production
+    $ git merge --no-ff staging
+
+### Hotfix branches
+
+Occasionally there's a bug that must be fixed **urgently**. In these cases, one may create a branch off production with the prefix *hotfix*, make the required fixes there, and then merge that into production for fast deployment.
+
+    # Creating a hotfix branch
+    # ...From the production branch
+    $ git co hotfix/signupBug
+    # Make the changes and commit.
+    $ git co production
+    $ git merge hotfix/signupBug
+    
+    # Once the problem has been resolved, clean up by merging this into staging.
+    $ git rebase staging hotfix/signupBug
+    $ git co staging
+    $ git merge --no-ff hotfix/signupBug
+    
+
 ## Ignore Files
 
 Each repository must have a `.gitignore` file. The following files/directories must be ignored where applicable.
