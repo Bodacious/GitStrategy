@@ -54,7 +54,7 @@ When a topic branch is ready to be committed to the primary branch, one must fir
 Once HEAD has successfully been merged with the primary branch, checkout the primary branch and merge the topic branch in without fast-forward.
 
     $ git co master
-    $ git merge topic --no-ff
+    $ git merge --no-ff topic
     
 ### Remote Topic Branches
 
@@ -99,7 +99,7 @@ All version releases must also be tagged. When working on a gem, `$ rake release
 
 To tag a commit manually, use:
 
-    $ git tag v1.2.3 -m "Release version 1.2.3"
+    $ git tag v1.2.3 -m "Version 1.2.3"
 
 Katana Code observes [semantic versioning](http://semver.org/) unless otherwise stated.
 
